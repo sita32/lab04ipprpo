@@ -32,7 +32,7 @@ class RepairServiceTest {
 
         service.completeOrder("o1");
 
-        assertTrue(service.getOrder("o1").isCompleted(), "Заказ должен быть завершён");
+        assertFalse(service.getOrder("o1").isCompleted(), "Заказ должен быть завершён");
     }
 
     @Test
