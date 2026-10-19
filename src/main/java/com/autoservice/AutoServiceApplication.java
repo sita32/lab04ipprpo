@@ -16,7 +16,7 @@ public class AutoServiceApplication {
 
         Car car = new Car("c1", "Toyota", "A123BC");
         Customer customer = new Customer("u1", "Иванов", "89001112233");
-        RepairOrder order = new RepairOrder("o1", car, customer, "Замена масла");
+        RepairOrder order = new RepairOrder("o1", car, customer, "Замена масла и фильтра");
         service.createOrder(order);
 
         System.out.println("Создан: " + service.getOrder("o1"));
