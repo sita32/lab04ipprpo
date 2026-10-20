@@ -24,8 +24,7 @@ pipeline {
             }
         }
 
-        // Этап из ЛР №3. Индивидуальное задание ЛР №4 — сценарий acceptCar
-        // и тест acceptCarMovesNewOrderToInProgress, он выполняется на этапе Test.
+        
         stage('Inspect Target') {
             steps {
                 echo 'Содержимое каталога target после сборки:'
