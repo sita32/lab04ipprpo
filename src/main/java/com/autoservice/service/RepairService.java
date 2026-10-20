@@ -51,6 +51,15 @@ public class RepairService {
         repairRepository.save(order);
     }
 
+    public void issueCar(String orderId) {
+        RepairOrder order = requireOrder(orderId);
+        if (!order.isCompleted()) {
+            throw new IllegalStateException("Нельзя выдать автомобиль: заказ ещё не завершён");
+        }
+        order.markIssued();
+        repairRepository.save(order);
+    }
+
     public RepairOrder getOrder(String orderId) {
         return requireOrder(orderId);
     }

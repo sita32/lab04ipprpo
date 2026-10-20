@@ -35,5 +35,8 @@ public class AutoServiceApplication {
 
         service.completeOrder("o1");
         System.out.println("Заказ закрыт: " + service.getOrder("o1"));
+
+        service.issueCar("o1");
+        System.out.println("Автомобиль выдан: " + service.getOrder("o1"));
     }
 }

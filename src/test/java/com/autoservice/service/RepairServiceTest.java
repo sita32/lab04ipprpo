@@ -32,7 +32,7 @@ class RepairServiceTest {
 
         service.completeOrder("o1");
 
-        assertFalse(service.getOrder("o1").isCompleted(), "Заказ должен быть завершён");
+        assertTrue(service.getOrder("o1").isCompleted(), "Заказ должен быть завершён");
     }
 
     @Test
@@ -67,7 +67,7 @@ class RepairServiceTest {
         service.acceptCar("o1");
 
         assertEquals(RepairStatus.IN_PROGRESS, service.getOrder("o1").getRepairStatus());
-        assertTrue(service.getOrder("o1").isCompleted(), "Приём автомобиля не закрывает заказ");
+        assertFalse(service.getOrder("o1").isCompleted(), "Приём автомобиля не закрывает заказ");
     }
 
     @Test
@@ -83,5 +83,17 @@ class RepairServiceTest {
 
         assertTrue(exception.getMessage().contains("уже в работе"));
         assertEquals(RepairStatus.IN_PROGRESS, service.getOrder("o1").getRepairStatus());
+    }
+
+    @Test
+    void issueCarWhenOrderIsCompleted() {
+        RepairService service = newService();
+        service.createOrder(newOrder());
+        service.changeRepairStatus("o1", RepairStatus.DONE);
+        service.completeOrder("o1");
+
+        service.issueCar("o1");
+
+        assertTrue(service.getOrder("o1").isIssued(), "Автомобиль должен быть выдан клиенту");
     }
 }

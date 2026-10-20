@@ -7,7 +7,8 @@ public class RepairOrder {
     private final Customer customer;      
     private final String description;     
     private RepairStatus repairStatus;    
-    private boolean completed;            
+    private boolean completed;
+    private boolean issued;
 
     public RepairOrder(String id, Car car, Customer customer, String description) {
         this.id = id;
@@ -15,7 +16,8 @@ public class RepairOrder {
         this.customer = customer;
         this.description = description;
         this.repairStatus = RepairStatus.NEW; 
-        this.completed = false;               
+        this.completed = false;
+        this.issued = false;
     }
 
     public String getId() {
@@ -42,12 +44,20 @@ public class RepairOrder {
         return completed;
     }
 
+    public boolean isIssued() {
+        return issued;
+    }
+
     public void setRepairStatus(RepairStatus repairStatus) {
         this.repairStatus = repairStatus;
     }
 
     public void markCompleted() {
         this.completed = true;
+    }
+
+    public void markIssued() {
+        this.issued = true;
     }
 
     @Override
