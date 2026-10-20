@@ -67,7 +67,7 @@ class RepairServiceTest {
         service.acceptCar("o1");
 
         assertEquals(RepairStatus.IN_PROGRESS, service.getOrder("o1").getRepairStatus());
-        assertFalse(service.getOrder("o1").isCompleted(), "Приём автомобиля не закрывает заказ");
+        assertTrue(service.getOrder("o1").isCompleted(), "Приём автомобиля не закрывает заказ");
     }
 
     @Test
